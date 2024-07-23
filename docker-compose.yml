@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  app1:
+    build:
+      context: ./app1
+      dockerfile: app1.dockerfile
+    ports:
+      - "4000:4000"
+    container_name: app1-container
+    networks:
+      - app-network
+
+  app2:
+    build:
+      context: ./app2
+      dockerfile: app2.dockerfile
+    ports:
+      - "4001:4001"
+    container_name: app2-container
+    depends_on:
+      - app1
+    environment:
+      - APP1_URL=http://app1:4000
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

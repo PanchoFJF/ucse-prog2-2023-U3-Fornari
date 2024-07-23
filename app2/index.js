@@ -12,10 +12,14 @@ const port = 4001;
 // - http://localhost:4001/checker?zone=Europe/London
 // Mas acerca de timezones https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
+//Luego de probar funcionan estos:
+// curl http://localhost:4000/tz?zone=America/New_York (Test para App1)
+// curl "http://localhost:4001/checker?zone=America/New_York&url=app1"  (Test para App2)
+
 app.get("/checker", async (req, res) => {
   try {
     const timezone = req?.query?.zone;
-    const url = req?.query?.url;
+    const url = req?.query?.url || 'app1'; // Aquí se establece 'app1' como valor predeterminado
     console.log(`Timezone for: ${timezone}`);
 
     if (!timezone)
