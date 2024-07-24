@@ -1,4 +1,5 @@
 # Dockerfile for App 2 (API)
+# # Crear imagen: docker build -t app2-image -f app2.dockerfile .
 
 # Usar una imagen de Node.js
 FROM node:16

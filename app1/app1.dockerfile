@@ -1,4 +1,5 @@
 # Dockerfile for App 1 (Time API)
+# Crear imagen: docker build -t app1-image -f app1.dockerfile .
 
 # Usar una imagen de Node.js
 FROM node:16
